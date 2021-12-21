@@ -13,7 +13,15 @@ import math
 
 class Car(): # main class
 	def __init__(self):
-
+		
+		# Pin numbers
+		self.analoogPin = machine.Pin(0) #D3
+		self.snelheidPinA = machine.Pin(15) #D8
+		self.richtingPinA = machine.Pin(12, Pin.OUT) #D6
+		self.snelheidPinB = machine.Pin(13) #D7
+		self.richtingPinB = machine.Pin(14, Pin.OUT) #D5
+		
+		
 		# var
 		# motor 
 		self.maxDutyMotor = 1023
@@ -36,30 +44,22 @@ class Car(): # main class
 
 
 		# servo pins and pwms
-		self.analoogPin = machine.Pin(0) #D3
 		self.pwmServo = machine.PWM(self.analoogPin)
 		self.pwmServo.freq(50)
 
 
 		# motor pins and pwms
-		self.snelheidPinA = machine.Pin(15) #D8
 
 		self.snelheidPWMA = machine.PWM(self.snelheidPinA)
 
 		self.snelheidPWMA.freq(50)
 
-		self.richtingPinA = machine.Pin(12, Pin.OUT) #D6
 
 		# richtingPinA.value(0)
 
-		self.snelheidPinB = machine.Pin(13) #D7
 		self.snelheidPWMB = machine.PWM(self.snelheidPinB)
 
 		self.snelheidPWMB.freq(50)
-
-		self.richtingPinB = machine.Pin(14, Pin.OUT) #D5
-
-
 
 
 		# joystick axes
