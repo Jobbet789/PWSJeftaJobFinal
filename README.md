@@ -121,9 +121,7 @@ Put the shield ontop of the WeMos and connect the jumper cables according to the
 |D5|Direction B|
 
 
-
-
-Connect the batterypack with the shield, or esp8266.
+Connect the batterypack with the shield or esp8266.
 
 
 ### Everything put together
