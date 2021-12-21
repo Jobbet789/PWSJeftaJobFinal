@@ -5,7 +5,9 @@ Concept version of our PWS
 
 
 - [Hardware](#hardware)
+- [Requirements](#requirements)
 - [Installation](#installation)
+- [Usage](#usage)
 
 
 ## Hardware
@@ -27,7 +29,18 @@ Concept version of our PWS
 #### [Back to contents](#contents)
 
 
+## Requirements
+- Computer with python 3
+- WeMos board (or any other esp8266 with WiFi)
+- Motor shield
+- Battery pack 
+- Jumper cables (M-F & M-M)
+- Lego Technic
+
+
 ## Installation
+
+## Usage
 
 
 
