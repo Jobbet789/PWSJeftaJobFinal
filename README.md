@@ -26,7 +26,7 @@ Concept version of our PWS
 
 
 ## Installation
-Install the two libraries: socket, pygame, esptool and mpfshell
+Install the four libraries: socket, pygame, esptool and mpfshell
 
 ```bash
 pip install socket
