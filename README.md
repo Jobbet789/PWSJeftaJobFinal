@@ -4,11 +4,34 @@ Concept version of our PWS
 ## Contents
 
 
-- [Hardware](#hardware)
 - [Requirements](#requirements)
 - [Installation](#installation)
+- [Hardware](#hardware)
 - [Usage](#usage)
 
+
+
+## Requirements
+- Computer with python 3
+- WeMos board (or any other esp8266 with WiFi)
+- Motor shield
+- Servo motor
+- Motor
+- Battery pack 
+- Jumper cables (M-F & M-M)
+- Lego Technic
+
+#### [Back to contents](#contents)
+
+
+## Installation
+Install the two libraries: socket, pygame, esptool
+
+```bash
+pip install socket
+pip install pygame
+pip install esptool
+```
 
 ## Hardware
 ### Single wheel
@@ -29,16 +52,7 @@ Concept version of our PWS
 #### [Back to contents](#contents)
 
 
-## Requirements
-- Computer with python 3
-- WeMos board (or any other esp8266 with WiFi)
-- Motor shield
-- Battery pack 
-- Jumper cables (M-F & M-M)
-- Lego Technic
 
-
-## Installation
 
 ## Usage
 
