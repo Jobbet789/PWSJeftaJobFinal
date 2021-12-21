@@ -1,16 +1,12 @@
 # PWS of Jefta and Job
 Concept version of our PWS
 
-## Index
-- Hardware
-  - Single wheel
-  - Empty frame
-  - The wheels put together
-  - How the WeMos' get connected
-  - Everything put together
-- Software
-  - Code on WeMos
-  - Code on Computer
+## Contents
+
+
+- [Hardware](#hardware)
+- [Installation](#installation)
+
 
 ## Hardware
 ### Single wheel
@@ -28,7 +24,12 @@ Concept version of our PWS
 ### Everything put together
 ![Everything put Together](Images/Top_of_Car.jpeg)
 
-## Software
-### Code on WeMos
-### Code on Computer
+#### [Back to contents](#contents)
+
+
+## Installation
+
+
+
+
 
