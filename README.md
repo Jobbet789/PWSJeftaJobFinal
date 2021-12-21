@@ -74,8 +74,6 @@ put boot.py
 
 
 
-
-
 ## Hardware
 ### Single wheel
 ![Single Wheel Image](Images/Single_Wheel.jpeg)
@@ -89,17 +87,50 @@ put boot.py
 ### How the WeMos' get connected
 ![How the WeMos' get Connected](Images/WeMos_Focussed.jpeg)
 
+Put the shield ontop of the WeMos and connect the jumper cables according to the following table.
+|Pin|Usage|
+|----|----|
+|D3|Servo Motor|
+|----|----|
+|D8|Motor A|
+|----|----|
+|D7|Motor B|
+|----|----|
+|D6|Direction A|
+|----|----|
+|D5|Direction B|
+
+_If you use the same shield, you do not need to look at the Motor and Direction pins, because they are connected to the motor pins on the motor shield. If you have a different shield with different pins, change the pin numbers in [main.py](WeMos_Files/main.py) according to the following table (and flash the esp8266 again)_
+
+|Pin|Number|
+|----|----|
+|D0|16|
+|----|----|
+|D1|5|
+|----|----|
+|D2|4|
+|----|----|
+|D3|0|
+|----|----|
+|D4|2|
+|----|----|
+|D5|14|
+|----|----|
+|D6|12|
+|----|----|
+|D7|13|
+|----|----|
+|D8|15|
+|----|----|
+|RX|3|
+|----|----|
+|TX|1|
+
+
 ### Everything put together
 ![Everything put Together](Images/Top_of_Car.jpeg)
 
 #### [Back to contents](#contents)
 
 
-
-
 ## Usage
-
-
-
-
-
