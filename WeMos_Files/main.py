@@ -40,10 +40,6 @@ class Car(): # main class
 		self.pwmServo = machine.PWM(self.analoogPin)
 		self.pwmServo.freq(50)
 
-		self.analoogPin1 = machine.Pin(2) #D4
-		self.pwmServo1 = machine.PWM(self.analoogPin1)
-		self.pwmServo1.freq(50) 
-
 
 		# motor pins and pwms
 		self.snelheidPinA = machine.Pin(15) #D8
@@ -88,14 +84,10 @@ class Car(): # main class
 
 		if valueX > self.deadzone:
 			self.pwmServo.duty(int(self.wheelMiddleDuty+(self.wheelRightDuty - self.wheelMiddleDuty)*(valueX/100)))
-			self.pwmServo1.duty(int(self.wheelMiddleDuty+(self.wheelRightDuty - self.wheelMiddleDuty)*(valueX/100)))
 		elif valueX < -self.deadzone:
 			self.pwmServo.duty(int(self.wheelMiddleDuty-(self.wheelMiddleDuty-self.wheelLeftDuty)*(valueX/100)))
-			self.pwmServo1.duty(int(self.wheelMiddleDuty-(self.wheelMiddleDuty-self.wheelLeftDuty)*(valueX/100)))
 		else:
 			self.pwmServo.duty(self.wheelMiddleDuty)
-			self.pwmServo1.duty(self.wheelMiddleDuty)
-
 
 
 
