@@ -13,11 +13,12 @@ Concept version of our PWS
 
 ## Requirements
 - Computer with python 3
-- WeMos board (or any other esp8266 with WiFi)
-- Motor shield
-- Servo motor
-- Motor
-- Battery pack 
+- 2x WeMos board (or any other esp8266 with WiFi)
+- Joystick
+- 2x Motor shield
+- 2x Servo motor
+- 4x Motor
+- 2x Battery pack 
 - Jumper cables (M-F & M-M)
 - Lego Technic
 
@@ -33,6 +34,27 @@ pip install pygame
 pip install esptool
 pip install mpfshell
 ```
+
+Add the SSID and password of your wifi network to [boot.py](WeMos_Files/boot.py). 
+
+**Note: Your computer and esp8266 need to be connected to the same WiFi network in order for this to work**
+
+If you use another shield, change the pin numbers in [main.py](WeMos_Files/main.py) according to this table.
+
+|Pin|Number|
+|---|------|
+|D0|16|
+|D1|5|
+|D2|4|
+|D3|0|
+|D4|2|
+|D5|14|
+|D6|12|
+|D7|13|
+|D8|15|
+|RX|3|
+|TX|1|
+
 
 
 Now, flash [Micropython](WeMos_Flies/esp8266-20210902-v1.17.bin) on the esp8266.
@@ -70,7 +92,9 @@ put main.py
 put boot.py
 ```
 
+**Note: Do this on all two esp8266's**
 
+#### [Back to contents](#contents)
 
 
 
@@ -96,21 +120,10 @@ Put the shield ontop of the WeMos and connect the jumper cables according to the
 |D6|Direction A|
 |D5|Direction B|
 
-_If you use the same shield, you do not need to look at the Motor and Direction pins, because they are connected to the motor pins on the motor shield. If you have a different shield with different pins, change the pin numbers in [main.py](WeMos_Files/main.py) according to the following table (and flash the esp8266 again)_
 
-|Pin|Number|
-|---|------|
-|D0|16|
-|D1|5|
-|D2|4|
-|D3|0|
-|D4|2|
-|D5|14|
-|D6|12|
-|D7|13|
-|D8|15|
-|RX|3|
-|TX|1|
+
+
+Connect the batterypack with the shield, or esp8266.
 
 
 ### Everything put together
@@ -120,3 +133,12 @@ _If you use the same shield, you do not need to look at the Motor and Direction 
 
 
 ## Usage
+
+1. Download [this file](Computer_Files/ComputerMainV3.py).
+2. Execute the file while connected to a joystick.
+3. Click the connect button.
+4. Reset the esp8266's.
+
+#### [Back to contents](#contents)
+
+
