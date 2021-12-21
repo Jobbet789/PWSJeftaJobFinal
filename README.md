@@ -1,5 +1,5 @@
 # PWS of Jefta and Job
-Final version of PWS 
+Concept version of our PWS
 
 ## The car's frame
 - Single Wheel
