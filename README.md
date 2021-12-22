@@ -112,17 +112,9 @@ put boot.py
 ![How the WeMos' get Connected](Images/WeMos_Focussed.jpeg)
 
 1. Put the shield ontop of the WeMos and connect the jumper cables according to the following table.
-|Pin|Usage|
-|---|-----|
-|D3|Servo Motor|
-|D8|Motor A|
-|D7|Motor B|
-|D6|Direction A|
-|D5|Direction B|
-
-
-2. Connect a batterypack to a shield or esp8266.
-3. Connect two motors to a shield. _Connect the second motor the same way as the first motor._
+2. Connect the brows wire of the servo to a ground pin, the middle one to a 5V pin and the other wire to the D3 pin.
+3. Connect a batterypack to a shield or esp8266.
+4. Connect two motors to a shield. _Connect the second motor the same way as the first motor._
 
 **Note: If the motors go to the wrong direction, swap the black cable with the red cable.**
 
