@@ -37,10 +37,10 @@ pip install mpfshell
 
 Add the SSID and password of your wifi network to [boot.py](WeMos_Files/boot.py), change the following variables.
 
-'''Python
+```py
 ssid = ""
 passw = ""
-'''
+```
 
 
 **Note: Your computer and esp8266 need to be connected to the same WiFi network in order for this to work**
@@ -63,7 +63,7 @@ If you use another shield, change the pin numbers in [main.py](WeMos_Files/main.
 
 
 
-Now, flash [Micropython](WeMos_Flies/esp8266-20210902-v1.17.bin) on the esp8266.
+#### Now, flash [Micropython](WeMos_Flies/esp8266-20210902-v1.17.bin) on the esp8266.
 
 First, uninstall the current flash.
 If you are on Windows, the port is probably `COM3`, for Linux it's probably `/dev/ttyUSB0`
@@ -72,13 +72,13 @@ esptool.py --port {port} erase_flash
 ```
 Now, deploy the firmware.
 ```bash
-esptool.py --port /dev/ttyUSB0 --baud 460800 write_flash --flash_size=detect 0 esp8266-20210902-v1.17.bin
+esptool.py --port {port} --baud 460800 write_flash --flash_size=detect 0 esp8266-20210902-v1.17.bin
 ```
 
 After that, put the files: [main.py](WeMos_Files/main.py) & [boot.py](WeMos_Files/boot.py) on the esp8266.
 You can use mpfshell for that.
 
-{port} is probably `COM3` on Windows and `ttyUSB0` on Linux
+"{port}" is probably `COM3` on Windows and `ttyUSB0` on Linux
 Open the terminal in the folder where the files are located
 
 Windows:
