@@ -111,7 +111,7 @@ put boot.py
 ### How the WeMos' get connected
 ![How the WeMos' get Connected](Images/WeMos_Focussed.jpeg)
 
-Put the shield ontop of the WeMos and connect the jumper cables according to the following table.
+1. Put the shield ontop of the WeMos and connect the jumper cables according to the following table.
 |Pin|Usage|
 |---|-----|
 |D3|Servo Motor|
@@ -121,7 +121,11 @@ Put the shield ontop of the WeMos and connect the jumper cables according to the
 |D5|Direction B|
 
 
-Connect the batterypack with the shield or esp8266.
+2. Connect a batterypack to a shield or esp8266.
+3. Connect two motors to a shield. _Connect the second motor the same way as the first motor._
+
+**Note: If the motors go to the wrong direction, swap the black cable with the red cable.**
+
 
 
 ### Everything put together
@@ -136,6 +140,8 @@ Connect the batterypack with the shield or esp8266.
 2. Execute the file while connected to a joystick.
 3. Click the connect button.
 4. Reset the esp8266's.
+
+After that, you can control the car with the joystick.
 
 #### [Back to contents](#contents)
 
