@@ -35,7 +35,13 @@ pip install esptool
 pip install mpfshell
 ```
 
-Add the SSID and password of your wifi network to [boot.py](WeMos_Files/boot.py). 
+Add the SSID and password of your wifi network to [boot.py](WeMos_Files/boot.py), change the following variables.
+
+'''Python
+ssid = ""
+passw = ""
+'''
+
 
 **Note: Your computer and esp8266 need to be connected to the same WiFi network in order for this to work**
 
