@@ -100,16 +100,16 @@ put boot.py
 
 ## Hardware
 ### Single wheel
-![Single Wheel Image](Images/Single_Wheel.jpeg =250x)
+<img src="Images/Single_Wheel.jpeg" width="200">
 
 ### Empty frame
-![Frame Top Empty](Images/Top_of_Car_Empty.jpeg)
+<img src="Images/Top_of_Car_Empty.jpeg" width="200">
 
 ### The wheels put together
-![The Wheels Put Together](Images/Front_of_Car.jpeg)
+<img src="Images/Front_of_Car.jpeg" width="200">
 
 ### How the WeMos' get connected
-![How the WeMos' get Connected](Images/WeMos_Focussed.jpeg)
+<img src="Images/WeMos_Focussed.jpeg" width="200">
 
 1. Put the shield ontop of the WeMos and connect the jumper cables according to the following table.
 2. Connect the brows wire of the servo to a ground pin, the middle one to a 5V pin and the other wire to the D3 pin.
