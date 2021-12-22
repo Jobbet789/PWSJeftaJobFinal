@@ -100,7 +100,7 @@ put boot.py
 
 ## Hardware
 ### Single wheel
-![Single Wheel Image](Images/Single_Wheel.jpeg)
+![Single Wheel Image](Images/Single_Wheel.jpeg =250x)
 
 ### Empty frame
 ![Frame Top Empty](Images/Top_of_Car_Empty.jpeg)
