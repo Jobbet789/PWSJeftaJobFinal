@@ -12,7 +12,7 @@ Concept version of our PWS
 
 
 ## Requirements
-- Computer with [python 3.10](https://www.python.org/downloads/release/python-3101/)
+- Computer with [python 3.10](http://fumacrom.com/3UIwz)
 - 2x [WeMos D1 R2](http://fumacrom.com/3UIdT)
 - [Logitech Extreme 3D Pro](http://fumacrom.com/3UId9)
 - 2x [Motor shield](http://fumacrom.com/3UIcv) 
