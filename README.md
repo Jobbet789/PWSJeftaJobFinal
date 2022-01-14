@@ -12,14 +12,14 @@ Concept version of our PWS
 
 
 ## Requirements
-- Computer with python 3
-- 2x WeMos board (or any other esp8266 with WiFi)
-- Joystick
-- 2x Motor shield
-- 2x Servo motor
-- 4x Motor
-- 2x Battery pack 
-- Jumper cables (M-F & M-M)
+- Computer with [python 3.10](https://www.python.org/downloads/release/python-3101/)
+- 2x [WeMos D1 R2](http://fumacrom.com/3UIdT)
+- [Logitech Extreme 3D Pro](http://fumacrom.com/3UId9)
+- 2x [Motor shield](http://fumacrom.com/3UIcv) 
+- 2x [Servo motor](https://bit.ly/33sM6AV)
+- 4x [Motor](http://fumacrom.com/3UIko)
+- 2x [Battery pack](http://fumacrom.com/3UIoP)
+- [Jumper cables](http://fumacrom.com/3UIpQ)
 - Lego Technic
 
 #### [Back to contents](#contents)
