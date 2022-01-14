@@ -12,7 +12,7 @@ Concept version of our PWS
 
 
 ## Requirements
-- Computer with [python 3.10](http://fumacrom.com/3UIwz)
+- Computer with the latest version of [Python3.8](http://fumacrom.com/3UJ33) or higher
 - 2x [WeMos D1 R2](http://fumacrom.com/3UIdT)
 - [Logitech Extreme 3D Pro](http://fumacrom.com/3UId9)
 - 2x [Motor shield](http://fumacrom.com/3UIcv) 
@@ -22,12 +22,18 @@ Concept version of our PWS
 - [Jumper cables](http://fumacrom.com/3UIpQ)
 - Lego Technic
 
+**Note**: You don't need these specific parts, but make sure: 
+- The motor shield fits on the esp8266 that you use.
+- You can connect the battery to the esp8266, or the shield.
+- You can connect the motor and servo motor to the shield or esp8266.
+
 #### [Back to contents](#contents)
 
 
 ## Installation
 Install the four libraries: socket, pygame, esptool and mpfshell
 
+*Execute this below line by line in your terminal. (CMD for Windows)
 ```bash
 pip install socket
 pip install pygame
@@ -43,7 +49,7 @@ passw = ""
 ```
 
 
-**Note: Your computer and esp8266 need to be connected to the same WiFi network in order for this to work**
+**Note: Your computer and esp8266 need to be connected to the same WiFi network in order for this to work.**
 
 If you use another shield, change the pin numbers in [main.py](WeMos_Files/main.py) according to this table.
 
@@ -65,8 +71,8 @@ If you use another shield, change the pin numbers in [main.py](WeMos_Files/main.
 
 #### Now, flash [Micropython](WeMos_Flies/esp8266-20210902-v1.17.bin) on the esp8266.
 
-First, uninstall the current flash.
-If you are on Windows, the port is probably `COM3`, for Linux it's probably `/dev/ttyUSB0`
+First, erase the current flash.
+If you are on Windows, the port is probably `COM3`, for Linux it's probably `/dev/ttyUSB0`.
 ```bash
 esptool.py --port {port} erase_flash
 ```
