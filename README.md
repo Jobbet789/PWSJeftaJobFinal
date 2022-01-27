@@ -84,7 +84,7 @@ esptool.py --port {port} --baud 460800 write_flash --flash_size=detect 0 esp8266
 After that, put the files: [main.py](WeMos_Files/main.py) & [boot.py](WeMos_Files/boot.py) on the esp8266.
 You can use mpfshell for that.
 
-"{port}" is probably `COM3` on Windows and `ttyUSB0` on Linux
+"{port}" is the COM-port you saw in device manager on Windows and probably `ttyUSB0` on Linux
 Open the terminal in the folder where the files are located
 
 Windows:
