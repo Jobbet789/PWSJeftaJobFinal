@@ -34,11 +34,15 @@ Install the four libraries: socket, pygame, esptool and mpfshell
 
 *Execute this below line by line in your terminal. (CMD for Windows)
 ```bash
-pip install socket
 pip install pygame
 pip install esptool
 pip install mpfshell
 ```
+
+**If you have problems with the installation click the following links
+- [pygame](https://www.pygame.org/wiki/GettingStarted#Pygame%20Installation)
+- [esptool](https://docs.espressif.com/projects/esptool/en/latest/esp32/installation.html#installation)
+- [mpfshell](https://github.com/wendlers/mpfshell)
 
 Add the SSID and password of your wifi network to [boot.py](WeMos_Files/boot.py), change the following variables.
 
@@ -79,6 +83,8 @@ Now, deploy the firmware.
 ```bash
 esptool.py --port {port} --baud 460800 write_flash --flash_size=detect 0 esp8266-20210902-v1.17.bin
 ```
+
+**If you have any problems with the installation, go to [esp8266 tutorial](https://docs.micropython.org/en/latest/esp8266/tutorial/intro.html)
 
 After that, put the files: [main.py](WeMos_Files/main.py) & [boot.py](WeMos_Files/boot.py) on the esp8266.
 You can use mpfshell for that.
