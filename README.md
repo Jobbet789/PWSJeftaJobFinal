@@ -68,10 +68,10 @@ If you use another shield, change the pin numbers in [main.py](WeMos_Files/main.
 
 
 
-#### Now, flash [Micropython](WeMos_Flies/esp8266-20210902-v1.17.bin) on the esp8266.
+#### Now, flash [Micropython](WeMos_Files/esp8266-20210902-v1.17.bin) on the esp8266.
 
 First, erase the current flash.
-If you are on Windows, you can check 'device manager', for Linux it's probably `/dev/ttyUSB0`.
+If you are on Windows, you can check 'device manager' (probably `COM3 or COM4`), for Linux it's probably `/dev/ttyUSB0`.
 ```bash
 esptool.py --port {port} erase_flash
 ```
