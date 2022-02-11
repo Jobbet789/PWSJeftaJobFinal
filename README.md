@@ -39,7 +39,7 @@ pip install esptool
 pip install mpfshell
 ```
 
-**If you have problems with the installation click the following links
+**If you have problems with the installation click the following links**
 - [pygame](https://www.pygame.org/wiki/GettingStarted#Pygame%20Installation)
 - [esptool](https://docs.espressif.com/projects/esptool/en/latest/esp32/installation.html#installation)
 - [mpfshell](https://github.com/wendlers/mpfshell)
@@ -84,7 +84,7 @@ Now, deploy the firmware.
 esptool.py --port {port} --baud 460800 write_flash --flash_size=detect 0 esp8266-20210902-v1.17.bin
 ```
 
-**If you have any problems with the installation, go to [esp8266 tutorial](https://docs.micropython.org/en/latest/esp8266/tutorial/intro.html)
+**If you have any problems with the installation, go to [esp8266 tutorial](https://docs.micropython.org/en/latest/esp8266/tutorial/intro.html)**
 
 After that, put the files: [main.py](WeMos_Files/main.py) & [boot.py](WeMos_Files/boot.py) on the esp8266.
 You can use mpfshell for that.
