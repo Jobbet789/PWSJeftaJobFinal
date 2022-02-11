@@ -145,8 +145,8 @@ put boot.py
 
 ## Usage
 
-1. Download [this file](Computer_Files/computerMainV3.py).
-2. Execute the file while connected to a joystick.
+1. Download [this file](Computer_Files/computerMainV4.py).
+2. Execute the file.
 3. Click the connect button.
 4. Reset the esp8266's.
 
