@@ -1,10 +1,13 @@
-# computer main v4.0
+# computer main v4.1
 
+# imports
 import pygame, time, socket
+from multiprocessing import Process 
 
-class App():
+class App(): # main class
 	def __init__(self):
 		pygame.init() # init pygame
+		pygame.font.init()
 		self.screen = pygame.display.set_mode((500, 500)) # define the screen
 		self.run = True # run = True for the main loop
 
@@ -18,34 +21,43 @@ class App():
 		# some font(s)
 		self.smallFont = pygame.font.SysFont('Corbel', 16)
 
+		# if its connected with the esp8266's
 		self.connected = False
 
-		self.minDuty = 18
-		self.maxDuty = 134
-		self.middleDuty = int((134-18)/2+(18/2))
 
 		self.move_input = 2 # 1 = backwards, 2 = stop, 3 = forwards
 		self.speedPercent = 0 # percent of speed
-		self.servo_input = 90 # 0 = left, 90 = middle, 180 = right
 
+
+		self.minDuty = 31
+		self.midDuty = 57
+		self.maxDuty = 82
+		self.servo_input = self.midDuty # 21 = left, 57 = middle, 92 = right
+
+		# increasy/decrease SpeedPercent
 		self.increase_SP = False
 		self.decrease_SP = False
 
-
+		# time it took per frame
 		self.delta = 0
+		self.time = 0 # time epilapsed 
+
+
+		# key presses list
+		self.key_press = [pygame.K_w, pygame.K_s, pygame.K_d, pygame.K_a, pygame.K_q, pygame.K_e]
 
 	def buttonConnect(self): # connect button
-		self.cList = car.connect()
-		self.connected = True
-		self.buttonConnect[4], self.buttonConnect[5] = "Disconnect", self.buttonDisconnect
+		self.cList = car.connect() # connecting with the esp8266's
+		self.connected = True # update the boolean
+		self.buttonConnect[4], self.buttonConnect[5] = "Disconnect", self.buttonDisconnect # change the button (text and function)
 
 	def buttonDisconnect(self): # disconnect button
-		car.disconnect(self.cList)
-		self.connected = False
-		self.buttonConnect[4], self.buttonConnect[5] = "Connect", self.buttonConnect # changes the list
+		car.disconnect(self.cList) # disconnect with the esp8266's 
+		self.connected = False # update the boolean
+		self.buttonConnect[4], self.buttonConnect[5] = "Connect", self.buttonConnect # changes the button (text and function)
 
 	def on_event(self, event): # when an event occurs
-		if event.type == pygame.QUIT:
+		if event.type == pygame.QUIT: 
 			self.run = False # quit app
 		else:
 			if event.type == pygame.MOUSEBUTTONDOWN: # when lmb gets pressed
@@ -57,52 +69,55 @@ class App():
 			# all key presses
 
 			if event.type == pygame.KEYDOWN: # when pressing a key
-				if event.key == pygame.K_w:
+				if event.key == pygame.K_w: # change move_input variabls (see line 30 for more info)
 					self.move_input = 3
 				elif event.key == pygame.K_s:
 					self.move_input = 1
 
-				if event.key == pygame.K_a:
+				if event.key == pygame.K_a: # change the servo input (see line 32 for more info)
 					self.servo_input = self.minDuty
 				elif event.key == pygame.K_d:
 					self.servo_input = self.maxDuty
 
-				if event.key == pygame.K_q:
+				if event.key == pygame.K_q: # changes the boolean decrease or increase
 					self.decrease_SP = True
 				elif event.key == pygame.K_e:
 					self.increase_SP = True
 
 			if event.type == pygame.KEYUP: # when releasing a key
-				if event.key == pygame.K_w:
-					self.move_input = 2
-				elif event.key == pygame.K_s:
+				if event.key == pygame.K_w or event.key == pygame.K_s: # change move_input variabls (see line 30 for more info)
 					self.move_input = 2
 
-				if event.key == pygame.K_a or event.key == pygame.K_d:
-					self.servo_input = self.middleDuty
+				if event.key == pygame.K_a or event.key == pygame.K_d: # change the servo input (see line 32 for more info)
+					self.servo_input = self.midDuty
 
-				if event.key == pygame.K_q:
+				if event.key == pygame.K_q: # change the booleans to false
 					self.decrease_SP = False
 				elif event.key == pygame.K_e:
 					self.increase_SP = False
 
 
+			if event.type == pygame.KEYUP or event.type == pygame.KEYDOWN: # if the event was a key release or a key press
+				Process(target = self.send_message).start() # send the information (all information, not only the updated information)
+				
 
-	def on_loop(self):
-		# make list and send message
-		message = [self.move_input, round(self.speedPercent), self.servo_input]
-		message = ' '.join([str(item) for item in message])
-		if self.connected:
-			car.send_message(message, self.cList)
 
 
 
 
-		if self.increase_SP == True and self.speedPercent < 100:
+	def on_loop(self):
+		if self.increase_SP == True and self.speedPercent < 100: # if increase or decrease is true, change speedPercent 
 			self.speedPercent += (self.delta*100)
 		if self.decrease_SP == True and self.speedPercent >= 0 :
 			self.speedPercent -= (self.delta*100)
 
+		# if speed percent is higher than 100, speed percent is 100
+		if self.speedPercent > 100:
+			self.speedPercent = 100
+
+		# same as above but with 0
+		if self.speedPercent < 0:
+			self.speedPercent = 0
 
 
 
@@ -116,7 +131,7 @@ class App():
 
 			counter = 1
 
-		
+		# draw rectangles on different places if there is an input, make it black if there is no input
 		if self.move_input == 3:
 			pygame.draw.rect(self.screen, pygame.Color('red'), pygame.Rect(0, 0, 500, 20))
 		else:
@@ -157,14 +172,18 @@ class App():
 		pygame.display.flip() # finally, render everything
 
 
-		
+	def send_message(self):
+		# make list and send message
+		message = [self.move_input, round(self.speedPercent), self.servo_input] # round speedPercent so it doesnt need to send too much information
+		message = " {}".format(' '.join([str(item) for item in message])) # make the 'list' one string
+		if self.connected: # if connected, send the message to every connection in the connection list
+			car.send_message(message, self.cList) 
+
 
 	def on_cleanup(self): # cleanup 
-		pygame.quit()
+		pygame.quit() # quit the app
 
 	def on_execute(self): # on execute
-		
-
 		while self.run: # main loop that calls the other loops
 			self.start = time.time() # gets start time
 			for event in pygame.event.get(): # gets the events
@@ -173,35 +192,37 @@ class App():
 			self.on_render() # call on render function
 			self.end = time.time() # gets end time
 			self.delta = (self.end-self.start) # calculate time it took for the past frame
+			self.time += self.delta
+			
 
 		self.on_cleanup() # when the main loop stops 
 class Car():
 	def __init__(self):
-		self.port = 12347
+		self.port = 6970 # define port
 
 	def disconnect(self, cList): # disconnect
-		self.send_message('close', cList)
-		for c in cList:
+		self.send_message('close', cList) # send close message so esp8266's know to close
+		for c in cList: # close every connection
 			c.close()
-		self.s.close()
+		self.s.close() # close this connection
 
 	def connect(self): # connect
 		print("connect")
-		self.s = socket.socket()
-		self.s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-		self.s.bind(('', self.port))
-		self.s.listen(5)
-		c, addr = self.s.accept()
-		#c1, addr1 = self.s.accept()
+		self.s = socket.socket() # makek socket
+		self.s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) # enable reuse address so you can run it instantly after closing app
+		self.s.bind(('', self.port)) # bind socket
+		self.s.listen(5) # listen for 5 connections
+		c, addr = self.s.accept() # accept addr 
+		#c1, addr1 = self.s.accept() # accept other addr
 		cList = [c]
 		print('connected')
 
-		return cList
+		return cList # return the connection list
 
 	def send_message(self, message, cList):
 		for i in cList: # loops through cList to send the message
 			i.send(message.encode()) 
-		time.sleep(0.3)
+			print(message)
 
 if __name__ == '__main__':
 	app = App()

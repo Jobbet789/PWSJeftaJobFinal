@@ -1,5 +1,5 @@
 
-# WASD main v1.0
+# WASD main v1.1
 
 '''
 you get four splits in the message: direction of motor, speed of motor, servo direction
@@ -24,7 +24,7 @@ class Car():
 		self.dutyAmount = 0
 
 		# networking
-		self.port = 12347
+		self.port = 6970
 		self.computerIp = '192.168.1.146'
 
 		# servo pins and pwms
@@ -56,19 +56,27 @@ class Car():
 		self.directionPinB = machine.Pin(14, Pin.OUT) #D5
 
 
+		self.info2_poss = [0, 90, 180] # possabilities of info[2]
+
+
 	def motor(self, direction, speedPercent):
 		direction, speedPercent = int(direction), int(speedPercent)
 		# set directions
-		if not direction == 2:
-			self.directionPinA.value(direction)
-			self.directionPinB.value(direction)
+		if direction == 3:
+
+			self.directionPinA.value(1)
+			self.directionPinB.value(1)
+		elif direction == 1:
+			self.directionPinB.value(0)
+			self.directionPinA.value(0)
 
 		# set speeds
-		speed = self.maxDutyMotor * speedPercent # calc speed
+		speed = self.maxDutyMotor * (speedPercent/100) # calc speed
+		print(speedPercent)
 
 		if speedPercent == 0: # if the speedPercent is 0 then the motor stops.
 			speed = 0
-		elif speed < self.minDutyMotor: # if speed is under the min duty it gets the min
+		elif speed > self.minDutyMotor: # if speed is under the min duty it gets the min
 			speed = self.minDutyMotor
 
 		# set speeds
@@ -80,33 +88,20 @@ class Car():
 			self.speedPWMB.duty(speed)
 
 
-	def servo(self, degrees):
+	def servo(self, duty):
 		'''
 		Pulse range = maximum pulse width - minimum pulse width (2 - 1 = 1)
 		Pulse width per degree = pulse range / 181. (1/181)
 		For a specified angle, the pulse width = minimum pulse width + (angle * pulse width per degree) (1 + (90 * (1/181)) = 1,4972)
 		'''
+		duty = int(duty)
+
+		
+		
+
+		self.pwmServo.duty(duty)
 
 
-		'''degrees = int(degrees)
-								# set directions
-								direction = (degrees/18.0) + 2.5
-						
-								pulse_width_per_degree = (1/181)
-								pulde_width = 1 + (degrees * pulse_width_per_degree)
-								percent_duty = pulde_width - 1
-								duty = int(percent_duty * self.maxDuty) 
-								if duty < self.minDuty:
-									duty = self.minDuty
-								print(duty)
-								
-								direction = int(direction)
-								# self.pwmServo.duty(direction)
-								# self.pwmServo.duty(direction)
-								self.pwmServo.duty(duty)'''
-
-		degrees = int(degrees)
-		self.pwmServo.duty(degrees)
 
 	def main_loop(self):
 		# decoding the message
@@ -114,14 +109,16 @@ class Car():
 		print('>', message, '<')
 		if message == 'close':
 			self.s.close()
-		else:
+		elif len(message.split()) >= 3:
 			info = []
 			counter = 0
 			for i in message.split():
 				info.append(i)
 				counter += 1
 
-			# call functions
+		# call functions
+		if not message == 'close':
+			print("call functions")
 			self.motor(info[0], info[1])
 			self.servo(info[2])
 
