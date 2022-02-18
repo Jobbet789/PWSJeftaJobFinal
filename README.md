@@ -34,6 +34,7 @@ Install the four libraries: socket, pygame, esptool and mpfshell
 
 *Execute this below line by line in your terminal. (CMD for Windows)
 ```bash
+pip install socket
 pip install pygame
 pip install esptool
 pip install mpfshell
