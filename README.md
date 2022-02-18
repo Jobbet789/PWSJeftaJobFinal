@@ -116,8 +116,10 @@ put boot.py
 
 
 ## Hardware
-### Single wheel
-<img src="Images/Single_Wheel.jpeg" width="400">
+### Front Part
+<img src="Images/Front_Part_Side.jpeg" width="400">
+
+<img sc="Images/Front_Part_Under.jpeg" width="400">
 
 ### Empty frame
 <img src="Images/Top_of_Car_Empty.jpeg" width="400">
