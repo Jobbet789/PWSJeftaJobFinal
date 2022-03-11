@@ -84,6 +84,7 @@ Now, deploy the firmware.
 ```bash
 esptool.py --port {port} --baud 460800 write_flash --flash_size=detect 0 esp8266-20210902-v1.17.bin
 ```
+**Note: if you are on linux, use sudo**
 
 **If you have any problems with the installation, go to [esp8266 tutorial](https://docs.micropython.org/en/latest/esp8266/tutorial/intro.html)**
 
