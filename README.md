@@ -1,5 +1,5 @@
 # PWS of Jefta and Job
-Concept version of our PWS
+Our PWS
 
 ## Contents
 
